@@ -31,7 +31,7 @@ router.post("/forest", function (req, res) {
 
 
 router.put("/forest/planted", function (req, res) {
-    console.log(req.body)
+    console.log(req.body);
     
     forest.update(req.body.id, function (err, data) {
 
@@ -40,11 +40,11 @@ router.put("/forest/planted", function (req, res) {
 
         if (data.changedRows === 0) {
             // If no rows were changed, then the ID must not exist, so 404
-            return res.status(404).end();
+            return res.status(200).json({ success:false});
         }
 
-        res.status(200).end();
-    })
+        res.status(200).json({success:true});
+    });
 
 });
 

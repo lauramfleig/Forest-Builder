@@ -24,20 +24,36 @@ $(function () {
 
 
     $(document).on("click", ".moveTree", function(){
+        //console.log($(this).data("name"));
         const planted = true;
-
+        var clickedButton = this;//pointing to the button that was clicked
         var targetID = {
-            id: $(this).attr('data-id')
+            id: $(this).attr('data-id'),
+           
         };
-        
+       
+
         $.ajax("/forest/planted", {
             type: "PUT",
             data: targetID
         }).then(
             function () {
-                 if (planted) {
-                     $('#seedlings').appendTo('#planted-section')
-                 }
+                
+                
+                // $('#seedlings').appendTo('#planted-section')
+                 
+                 
+                var name = $(clickedButton).data('name');
+                 //remove the parent holding the button
+                 $(clickedButton).parent().remove();
+                // console.log($(clickedButton).data('name'));
+                 //create a li item to the plated trees
+                var html = '<div id="seedlings">';
+                    html += '<p>Tree Name: '+name+'</p>'
+                    html += '</div>';
+
+                    
+                $("#planted-section").append(html);
             }
             );
     });
