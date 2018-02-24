@@ -25,7 +25,6 @@ $(function () {
 
     $(document).on("click", ".moveTree", function(){
         //console.log($(this).data("name"));
-        const planted = true;
         var clickedButton = this;//pointing to the button that was clicked
         var targetID = {
             id: $(this).attr('data-id'),
@@ -34,7 +33,7 @@ $(function () {
        
 
         $.ajax("/forest/planted", {
-            type: "PUT",
+            type: "PUT", //CRUD
             data: targetID
         }).then(
             function () {
