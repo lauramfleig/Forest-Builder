@@ -1,0 +1,28 @@
+<h1>Forest Builder</h1>
+
+<div class="container">
+
+    <div class="seedling-section">
+        <ul>
+            {{#each trees}}
+            <li id="seedlings">
+                <p>Tree Name: {{tree_name}}</p>
+                <button data-id="{{this.id}}" class="moveTree">Move to Forest</button>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+
+
+    <div id="planted-section">
+        <h2>Planted Trees</h2>
+    </div>
+
+
+<h2>Enter a Type of Tree</h2>
+<form id="buildForest" class="button-size">
+    <textarea type="text" name="tree_name"></textarea>
+    <button type="submit">Plant a Tree!</button>
+</form>
+
+</div>
